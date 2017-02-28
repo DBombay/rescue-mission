@@ -1,9 +1,18 @@
 <h1>Rescue Mission</h1>
 <h4><i>No need to be stranded with your questions anymore!</i></h3>
 
-<ul>
-  <% @questions.each do |q| %>
-  <li><%= link_to q.title, question_path(q) %></li>
-  </br>
-  <%end%>
-</ul>
+<div>
+  <p>
+    <%= render "form" %>
+  </p>
+</div>
+
+<div>
+    <h3>Questions</h3>
+  <ul>
+    <% @questions.each do |q| %>
+    <li><%= link_to q.title, question_path(q) %></li>
+    </br>
+    <%end%>
+  </ul>
+</div>
