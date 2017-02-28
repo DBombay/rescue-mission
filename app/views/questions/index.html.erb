@@ -3,7 +3,7 @@
 
 <ul>
   <% @questions.each do |q| %>
-  <li><%=q.title%></li>
+  <li><%= link_to q.title, question_path(q) %></li>
   </br>
   <%end%>
 </ul>
