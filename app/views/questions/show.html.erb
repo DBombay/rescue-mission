@@ -11,6 +11,18 @@
 
 <div>
   <h4>Answers</h4>
+  <%= render "form_answers" %>
+</div>
+
+<div>
+  <ul>
+    <% @answers.list.each do |a| %>
+    <li>
+      <%= a.description %>
+    </li>
+    </br>
+    <%end%>
+  </ul>
 </div>
 
 <div>
