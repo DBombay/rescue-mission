@@ -19,8 +19,9 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
 
     if @question.save
-      redirect_to questions_path, notice: 'You successfully posted a new question.'
+      redirect_to @question, notice: 'You successfully posted a new question.'
     else
+      @error = @question.errors
       render action: 'index'
     end
   end
@@ -31,9 +32,22 @@ class QuestionsController < ApplicationController
 
   def update
     @question = Question.find(params[:id])
-    @question.update_attributes(question_params)
+    @question.assign_attributes(question_params)
 
-    redirect_to @question
+    if @question .valid?
+      @question.save
+      redirect_to @question
+    else
+      @error = @question.errors
+      render action: 'edit'
+    end
+  end
+
+  def destroy
+    @question = Question.find(params[:id])
+    @question.delete
+
+    redirect_to root_path
   end
 
   private

@@ -8,11 +8,20 @@
     <%= @question.description%>
   </p>
   <%= link_to "Edit this Question", edit_question_path(@question) %>
+  <%= link_to "Murder this Question", @question, method: :delete %>
 </div>
 
 <div>
   <h4>Answers</h4>
   <%= render "form_answers" %>
+
+  <p style= "color: red;">
+    <% if @error %>
+      <% @error.messages.each do |part, error| %>
+        <%= "The #{part} #{error[0]}"%>
+      <%end%>
+    <%end%>
+    </p>
 </div>
 
 <div>

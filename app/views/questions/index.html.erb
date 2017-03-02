@@ -5,6 +5,15 @@
   <p>
     <%= render "form" %>
   </p>
+  <p style= "color: red;">
+    <% if @error %>
+      <% @error.messages.each do |part, error| %>
+        <% if error[0] %>
+          <%= "The #{part} #{error[0]}. "%>
+        <%end%>
+      <%end%>
+    <%end%>
+    </p>
 </div>
 
 <div>
